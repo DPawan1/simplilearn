@@ -1,2 +1,0 @@
-# simplilearn
-Java practice codes
