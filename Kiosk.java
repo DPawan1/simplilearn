@@ -21,7 +21,7 @@ public class Kiosk {
 			try {
 			fileWithAbsolutePath.createNewFile();
 			}
-			catch(Exception e) {}
+			catch(Exception e) {System.out.println("file with the given name already exists");}
 		//assertTrue(fileWithAbsolutePath.exists());
 		System.out.println("File Added Successfully");
 		keyRepository();
