@@ -1,11 +1,10 @@
 import java.util.Scanner;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.File;
-public class Kiosk {
+ class FileExecutor {
 	//private static ArrayList<String> lst=new ArrayList<>();
-	private static String dirPath="C:\\Users\\pawan\\eclipse-workspace\\Simplilearn1\\src\\demoDir";
-	public static void addFile()   {
+	private String dirPath="C:\\Users\\pawan\\eclipse-workspace\\Simplilearn1\\src\\demoDir";
+	public void addFile()   {
 		System.out.println("Enter file Name to add the file");
 		Scanner sc = new Scanner(System.in);
 		String s=sc.nextLine();
@@ -13,6 +12,7 @@ public class Kiosk {
 
 		if(fileWithAbsolutePath.exists()) {
 			System.out.println("file with the given name already exists");
+			//sc.close();
 			keyRepository();
 			
 		}
@@ -20,14 +20,17 @@ public class Kiosk {
 		//File.touch(fileWithAbsolutePath);
 			try {
 			fileWithAbsolutePath.createNewFile();
+			//sc.close();
 			}
-			catch(Exception e) {System.out.println("file with the given name already exists");}
+			catch(Exception e) {
+				System.out.println("file with the given name already exists");
+			}
 		//assertTrue(fileWithAbsolutePath.exists());
 		System.out.println("File Added Successfully");
 		keyRepository();
 		}
 	}
-	public static void deleteFile() {
+	public void deleteFile() {
 		System.out.println("Enter file Name to Delete");
 		Scanner sc = new Scanner(System.in);
 		String s=sc.nextLine();
@@ -45,7 +48,7 @@ public class Kiosk {
 		
 
 	}
-	public static void searchFile() {
+	public void searchFile() {
 		System.out.println("Enter file Name to Search");
 		Scanner sc = new Scanner(System.in);
 		String s=sc.nextLine();
@@ -57,23 +60,27 @@ public class Kiosk {
 		for(String str: contents) {
 			if(str.equals(s)) {
 				System.out.println("File "+ s +" found");
+				//sc.close();
 				keyRepository();
+				
 			}
 		}
 		System.out.println("FileNot found");
+		//sc.close();
 		keyRepository();
 
 	}
 	
-	public static void keyRepository() {
+	public void keyRepository() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please Choose a Operation");
 		System.out.println("1. Add a File");
 		System.out.println("2. Delete a File");
 		System.out.println("3. Search a File");
 		int input= sc.nextInt();
+		//sc.close();
 		if(input==1) {
-			addFile();
+			this.addFile();
 		}
 		else if(input==2){
 			deleteFile();
@@ -81,9 +88,10 @@ public class Kiosk {
 		else {
 			searchFile();
 		}
+		
 	}
 	
-	public static void showFiles() {
+	public void showFiles() {
 		File directory=new File(dirPath);
 		int fileCount=directory.list().length;
 	    System.out.println("File Count:"+fileCount);
@@ -96,13 +104,16 @@ public class Kiosk {
 	      }
 	}
 
+	
+
+}
+public class Kiosk{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Welcome to Company Lockers Pvt Ltd");
-		showFiles();
-		keyRepository();
+		FileExecutor bob = new FileExecutor();
+		bob.showFiles();
+		bob.keyRepository();
 		
-
 	}
-
 }
